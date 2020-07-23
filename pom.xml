@@ -138,7 +138,7 @@
 							<inputSpec>${project.basedir}/src/main/resources/rndm.yaml</inputSpec>
 							<!--<inputSpec>rndm.yaml</inputSpec>-->
 							<language>java</language>
-							<!--<library>resttemplate</library>-->
+							<library>resttemplate</library>
 							<configOptions>
 								<sourceFolder>src/gen/java/main</sourceFolder>
 								<dateLibrary>java8</dateLibrary>
