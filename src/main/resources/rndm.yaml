@@ -1,4 +1,5 @@
 swagger: "2.0"
+
 info:
   description: "Write\
     \ description\
@@ -11,24 +12,32 @@ info:
   license:
     name: ""
     url: ""
-host: ""
-basePath: "/v1"
+
 tags:
   - name: "rndm"
     description: "Let rndm pick an item from your list"
     externalDocs:
       description: ""
       url: ""
+
+host: "localhost:8080"
+basePath: "/v1"
 schemes:
   - "http"
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
 paths:
-  /list:
+  /itemlist:
     post:
       tags:
-        - "list"
-      summary: "Add list"
+        - "itemlist"
+      summary: "Add item list"
       description: ""
-      operationId: "addList"
+      operationId: "addItemList"
       consumes:
         - "application/json"
       produces:
@@ -39,7 +48,7 @@ paths:
           description: "List with items"
           required: true
           schema:
-            $ref: "#/definitions/List"
+            $ref: "#/definitions/ItemList"
       responses:
         400:
           description: "Bad request"
@@ -61,15 +70,13 @@ paths:
 #    name: "api_key"
 #    in: "header"
 definitions:
-  List:
+  ItemList:
     type: "object"
     properties:
       id:
-        type: "integer"
-        format: "int64"
+        type: "string"
       name:
         type: "string"
-        format: "int64"
 #  ApiResponse:
 #    type: "object"
 #    properties:
