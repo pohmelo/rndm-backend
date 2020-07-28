@@ -31,7 +31,7 @@ produces:
   - application/json
 
 paths:
-  /itemlist:
+  /itemlists:
     post:
       tags:
         - "itemlist"
@@ -52,6 +52,8 @@ paths:
       responses:
         400:
           description: "Bad request"
+        500:
+          description: "Internal server error"
 #      security:
 #        - petstore_auth:
 #            - "write:pets"
@@ -70,12 +72,27 @@ paths:
 #    name: "api_key"
 #    in: "header"
 definitions:
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      userName:
+        type: "string"
+      password:
+        type: "string"
   ItemList:
     type: "object"
     properties:
       id:
         type: "string"
       name:
+        type: "string"
+      items:
+        type: "array"
+        items:
+          type: "string"
+      userId:
         type: "string"
 #  ApiResponse:
 #    type: "object"

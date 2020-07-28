@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import io.swagger.api.ItemlistApi;
+import io.swagger.api.ItemlistsApi;
 import io.swagger.model.ItemList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +22,13 @@ import java.util.Optional;
 @RestController
 public class ItemListController {
 
-    Logger logger = LoggerFactory.getLogger(ItemlistApi.class);
+    Logger logger = LoggerFactory.getLogger(ItemlistsApi.class);
 
     @ApiOperation(value = "Add item list", nickname = "addItemList", notes = "", tags={ "itemlist", })
     @ApiResponses(value = {
-            @ApiResponse(code = 400, message = "Bad request") })
-    @RequestMapping(value = "/itemlist",
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 500, message = "Internal server error") })
+    @RequestMapping(value = "/itemlists",
             produces = { "application/json" },
             consumes = { "application/json" },
             method = RequestMethod.POST)
