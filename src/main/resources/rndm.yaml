@@ -50,6 +50,14 @@ paths:
           schema:
             $ref: "#/definitions/ItemList"
       responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "string"
+                description: "Id of item list created"
         400:
           description: "Bad request"
         500:
