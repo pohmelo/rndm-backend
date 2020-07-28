@@ -8,10 +8,9 @@ info:
   title: "rndm"
   termsOfService: "http://swagger.io/terms/"
   contact:
-    email: ""
+    email: "mikkovp@hotmail.com"
   license:
-    name: ""
-    url: ""
+    name: "If you'd like to use this software, please ask me to add license."
 
 tags:
   - name: "rndm"
@@ -38,10 +37,6 @@ paths:
       summary: "Add item list"
       description: ""
       operationId: "addItemList"
-      consumes:
-        - "application/json"
-      produces:
-        - "application/json"
       parameters:
         - in: "body"
           name: "body"
@@ -58,6 +53,28 @@ paths:
               id:
                 type: "string"
                 description: "Id of item list created"
+        400:
+          description: "Bad request"
+        500:
+          description: "Internal server error"
+  /itemlists/{userId}:
+    get:
+      tags:
+        - "itemlist"
+      summary: "Get item list"
+      description: ""
+      operationId: "getItemList"
+      parameters:
+        - in: "path"
+          name: "userId"
+          description: "User id"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/ItemList"
         400:
           description: "Bad request"
         500:
