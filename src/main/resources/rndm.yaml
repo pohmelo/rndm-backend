@@ -57,13 +57,96 @@ paths:
           description: "Bad request"
         500:
           description: "Internal server error"
-  /itemlists/{userId}:
     get:
       tags:
         - "itemlist"
       summary: "Get item list"
       description: ""
       operationId: "getItemList"
+      parameters:
+        - in: "query"
+          name: "itemListId"
+          description: "item list id"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/ItemList"
+        400:
+          description: "Bad request"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Item list not found"
+        500:
+          description: "Internal server error"
+    put:
+      tags:
+        - "itemlist"
+      summary: "Update item list"
+      description: ""
+      operationId: "updateItemList"
+      parameters:
+        - in: "query"
+          name: "itemListId"
+          description: "Item list id"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "string"
+                description: "Id of item list created"
+        400:
+          description: "Bad request"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Item list not found"
+        500:
+          description: "Internal server error"
+    delete:
+      tags:
+        - "itemlist"
+      summary: "Delete item list"
+      description: ""
+      operationId: "deleteItemList"
+      parameters:
+        - in: "query"
+          name: "itemListId"
+          description: "item list id"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                description: "Name of item list deleted"
+        400:
+          description: "Bad request"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Item list not found"
+        500:
+          description: "Internal server error"
+  /itemlists/{userId}:
+    get:
+      tags:
+        - "itemlist"
+      summary: "Get user's item lists"
+      description: ""
+      operationId: "getItemLists"
       parameters:
         - in: "path"
           name: "userId"
@@ -74,11 +157,48 @@ paths:
         200:
           description: "Successful operation"
           schema:
-            $ref: "#/definitions/ItemList"
+            type: "array"
+            items:
+              $ref: "#/definitions/ItemList"
         400:
           description: "Bad request"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Item list not found"
         500:
           description: "Internal server error"
+  /itemlists/random:
+    get:
+      tags:
+        - "itemlist"
+      summary: "Get random item of item list"
+      description: ""
+      operationId: "getRandomItem"
+      parameters:
+        - in: "query"
+          name: "itemListId"
+          description: "Item list id"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "object"
+            properties:
+              randomItem:
+                type: "string"
+                description: "Random item from item list"
+        400:
+          description: "Bad request"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Item list not found"
+        500:
+          description: "Internal server error"
+
 #      security:
 #        - petstore_auth:
 #            - "write:pets"
