@@ -57,6 +57,7 @@ paths:
           description: "Bad request"
         500:
           description: "Internal server error"
+  /itemlists/{itemListId}:
     get:
       tags:
         - "itemlist"
@@ -64,7 +65,7 @@ paths:
       description: ""
       operationId: "getItemList"
       parameters:
-        - in: "query"
+        - in: "path"
           name: "itemListId"
           description: "item list id"
           required: true
@@ -89,7 +90,7 @@ paths:
       description: ""
       operationId: "updateItemList"
       parameters:
-        - in: "query"
+        - in: "path"
           name: "itemListId"
           description: "Item list id"
           required: true
@@ -118,7 +119,7 @@ paths:
       description: ""
       operationId: "deleteItemList"
       parameters:
-        - in: "query"
+        - in: "path"
           name: "itemListId"
           description: "Item list id"
           required: true
@@ -140,7 +141,7 @@ paths:
           description: "Item list not found"
         500:
           description: "Internal server error"
-  /itemlists/{userId}:
+  /users/{userId}/itemlists:
     get:
       tags:
         - "itemlist"
@@ -168,7 +169,7 @@ paths:
           description: "User not found"
         500:
           description: "Internal server error"
-  /itemlists/random:
+  /itemlists/{itemListId}/random:
     get:
       tags:
         - "itemlist"
@@ -176,7 +177,7 @@ paths:
       description: ""
       operationId: "getRandomItem"
       parameters:
-        - in: "query"
+        - in: "path"
           name: "itemListId"
           description: "Item list id"
           required: true
@@ -225,6 +226,7 @@ paths:
           description: "Bad request"
         500:
           description: "Internal server error"
+  /users/{userId}:
     get:
       tags:
         - "user"
@@ -232,7 +234,7 @@ paths:
       description: ""
       operationId: "getUser"
       parameters:
-        - in: "query"
+        - in: "path"
           name: "userId"
           description: "User id"
           required: true
@@ -257,7 +259,7 @@ paths:
       description: ""
       operationId: "updateUser"
       parameters:
-        - in: "query"
+        - in: "path"
           name: "userId"
           description: "User id"
           required: true
@@ -286,7 +288,7 @@ paths:
       description: ""
       operationId: "deleteUser"
       parameters:
-        - in: "query"
+        - in: "path"
           name: "userId"
           description: "User id"
           required: true
